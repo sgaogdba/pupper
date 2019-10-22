@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit backupGlobals="false"
+         backupStaticAttributes="false"
+         bootstrap="vendor/autoload.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         processIsolation="false"
+         stopOnFailure="false">
+    <testsuites>
+        <testsuite name="Unit">
+            <directory suffix="Test.php">./tests/Unit</directory>
+            <exclude>./tests/Unit/ExampleTest.php</exclude>
+        </testsuite>
+
+        <testsuite name="Feature">
+            <directory suffix="Test.php">./tests/Feature</directory>
+            <exclude>./tests/Feature/ExampleTest.php</exclude>
+        </testsuite>
+
+        <testsuite name="API">
+            <directory suffix="Test.php">./tests/Api</directory>
+            <exclude>./tests/Api/ExampleTest.php</exclude>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./app</directory>
+
+            <exclude>
+                <!-- Default, Laravel scaffolding that is unmodified. -->
+                <file>./app/Http/Controllers/Auth/ForgotPasswordController.php</file>
+                <file>./app/Http/Controllers/Auth/ResetPasswordController.php</file>
+                <file>./app/Http/Controllers/Auth/VerificationController.php</file>
+
+                <!-- Exclude these console commands, since they're only for the demo. -->
+                <file>./app/Console/Commands/GeneratePost.php</file>
+                <file>./app/Console/Commands/GenerateUsers.php</file>
+            </exclude>
+        </whitelist>
+    </filter>
+    <php>
+        <server name="APP_ENV" value="testing"/>
+        <server name="BCRYPT_ROUNDS" value="4"/>
+        <server name="CACHE_DRIVER" value="array"/>
+        <server name="DB_DATABASE" value="pupper_test"/>
+        <server name="MAIL_DRIVER" value="array"/>
+        <server name="QUEUE_CONNECTION" value="sync"/>
+        <server name="SESSION_DRIVER" value="array"/>
+    </php>
+</phpunit>
